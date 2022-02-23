@@ -12,7 +12,7 @@
 * \i 'file-location'
 *
 * example:
-* \i 'C:/Users/lukas61695/Desktop/Saved/Projects/Grad2022Jan-Team6-Ecommerce/database-ecommerce-project-graduate-jan-22/create_database.sql'
+* \i 'C:/Users/lukas61695/Desktop/Saved/Projects/database-ecommerce-project-graduate-jan-22/create_database.sql'
 *******************************************************/
 
 --terminate any connections to the database which could interfere with deletion
