@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 // import route in index.js
 const productRoute = require("./routes/createProduct");
+const getProductRouter = require("./routes/getProducts");
 
 // creating Web server
 const app = express();
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
 // middleware - use()
 app.use("/products", productRoute);
+app.use("/products", getProductRouter);
 
 app.listen(3000, () => {
   console.log("server started...");
