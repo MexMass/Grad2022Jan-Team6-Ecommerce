@@ -139,7 +139,7 @@ VALUES ('Mr','Admin_FName', 'Admin_LName', 'admin0000', 'admin@toy.com', '2022-0
 
 --Insert: Tags
 INSERT INTO tags(name)
-VALUES ('action_hero'),('soft_toy'),('puzzle'),('video_game'),('science'),('age0-6'),('age6-12'),('age12+'); --Add tags to the database
+VALUES ('actionhero'),('softtoy'),('puzzle'),('videogame'),('science'),('age0to6'),('age6to12'),('age12plus'); --Add tags to the database
 
 --optional data
 --Insert: Sample User
