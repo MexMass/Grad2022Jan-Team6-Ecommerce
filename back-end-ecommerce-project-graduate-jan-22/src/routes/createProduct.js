@@ -14,16 +14,16 @@ function newProduct(req, res) {
   VALUES ('${name}', '${supplier_name}', ${units_in_stock}, ${total_price}, ${discontinued}, '${image_url}');
   `;
 
-  pool.query(myquery, (error, response) => { // run query
+  pool.query(myquery, (error, result) => { // run query
     
     if (error) {
         console.error(error);
         res.json({response: error.message}); // if error then send response
         return;
+    }else {
+      console.log('Data inserted into products table');
+      res.json({response: "Product " + name + " created."});
     }
-
-    console.log('Data inserted into products table');
-    res.json({response: "Product " + name + " created."});
   });
 }
 
@@ -37,16 +37,16 @@ function discontinueProduct(req, res) {
   WHERE id = ${id};
   `;
 
-  pool.query(myquery, (error, response) => {
+  pool.query(myquery, (error, result) => {
     
     if (error) {
         console.error(error);
         res.json({response: error.message}); // if error then send response
         return;
+    } else {
+      console.log('Data changed in products table');
+      res.json({response: "Product with id " + id + " discontinued."})
     }
-
-    console.log('Data changed in products table');
-    res.json({response: "Product with id " + id + " discontinued."})
   });
 }
 
