@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../dbconnection");
+const pool = require("../dbconnection"); //import database connection
 
 //default url - Returns array of all products
 router.get("", getProducts);

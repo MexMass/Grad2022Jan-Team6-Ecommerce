@@ -7,9 +7,11 @@ import { ToyService } from 'src/app/services/toy.service';
   styleUrls: ['./toy.component.css']
 })
 export class ToyComponent implements OnInit {
+
   postId: string='';
   postTag: string='';
   service:ToyService;
+
   constructor(service:ToyService) {
     this.service = service;
    }
@@ -20,12 +22,14 @@ export class ToyComponent implements OnInit {
     })
   }
 
+  //method to get toys by id
   getToyById(){
     let x = this.service.getToyById(this.postId);
     x. subscribe((response)=>{console.log(response);
     })
   }
 
+  //method to gey toys by tag
   getToyByTag(){
     let x = this.service.getToyByTag(this.postTag);
     x. subscribe((response)=>{console.log(response);
