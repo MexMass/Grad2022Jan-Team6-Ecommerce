@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const postProductRoute = require("./routes/createProduct");
 const getProductRouter = require("./routes/getProducts");
 const discountRouter = require("./routes/discount");
+const ordersRouter = require("./routes/orders");
 
 // creating Web server
 const app = express();
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 app.use("/products", postProductRoute);
 app.use("/products", getProductRouter);
 app.use("/discounts", discountRouter);
+app.use("/orders", ordersRouter);
 
 app.listen(3000, () => {
   console.log("server started...");
