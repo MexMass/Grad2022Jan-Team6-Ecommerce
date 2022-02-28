@@ -151,6 +151,7 @@ INSERT INTO products(name, supplier_name, units_in_stock, total_price, discontin
 VALUES ('Teddy Bear', 'BearCo', 400, 9.99, false, 'https://media.istockphoto.com/photos/small-teddy-bear-isolated-on-white-picture-id182834193'),
        ('Superman', 'Smyths Toys', 250, 5.98, false, 'https://image.smythstoys.com/zoom/185372.jpg'),
        ('Xbox Wireless Controller', 'Smyths Toys', 220, 54.99, false, 'https://image.smythstoys.com/original/desktop/192245.webp');
+       ('Rubik Cube', 'Puzzles4U', 320, 5.99, true, 'https://www.muminthemadhouse.com/wp-content/uploads/2015/09/RubikCube03b-e1442570410787.jpg');
 
 --Insert: Assign tags to sample products
 INSERT INTO product_tags(product_id, tag_id)

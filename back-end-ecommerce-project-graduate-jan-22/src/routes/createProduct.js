@@ -2,8 +2,8 @@ const express = require("express");
 const pool = require("../dbconnection");
 const router = express.Router();
 
-router.post("/create", newProduct); // endpoint - http://localhost:3000/db/create
-router.post("/addDiscount", newDiscount); // endpoint - http://localhost:3000/db/addDiscount
+router.post("/create", newProduct); // endpoint - http://localhost:3000/products/create
+router.put("/discontinue/:id", discontinueProduct); // endpoint - http://localhost:3000/products/discontinue/id
 
 function newProduct(req, res) {
   const { name, supplier_name, units_in_stock, total_price, discontinued, image_url } = req.body; // get details from req.body
@@ -22,18 +22,19 @@ function newProduct(req, res) {
         return;
     }
 
-    console.log('Data insert successful');
+    console.log('Data inserted into products table');
     res.json({response: "Product " + name + " created."});
   });
 }
 
-function newDiscount(req, res) {
-  const { product_id, percent } = req.body; // get details from req.body
+function discontinueProduct(req, res) {
+  const id = parseInt(req.params.id); // get id from parameters
 
   let myquery = // query for insert
   `
-  INSERT INTO discounts(product_id, percent)
-  VALUES ('${product_id}', '${percent}');
+  UPDATE products
+  SET discontinued = true 
+  WHERE id = ${id};
   `;
 
   pool.query(myquery, (error, response) => {
@@ -44,8 +45,8 @@ function newDiscount(req, res) {
         return;
     }
 
-    console.log('Data insert successful');
-    res.json({response: "Discount created."}); // if successfull then send response
+    console.log('Data changed in products table');
+    res.json({response: "Product with id " + id + " discontinued."})
   });
 }
 
