@@ -18,6 +18,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// CORS middleware to allow angular access to nodeJs
+app.use((req, res, next) => {
+  console.log("within cors configuration middleware");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  next();
+});
+
 // middleware - use()
 app.use("/products", postProductRoute);
 app.use("/products", getProductRouter);
