@@ -7,7 +7,8 @@ import { ToyService } from 'src/app/services/toy.service';
   styleUrls: ['./toy.component.css']
 })
 export class ToyComponent implements OnInit {
-
+  postId: string='';
+  postTag: string='';
   service:ToyService;
   constructor(service:ToyService) {
     this.service = service;
@@ -15,6 +16,18 @@ export class ToyComponent implements OnInit {
 
   ngOnInit(): void {
     let x = this.service.getAllToys();
+    x. subscribe((response)=>{console.log(response);
+    })
+  }
+
+  getToyById(){
+    let x = this.service.getToyById(this.postId);
+    x. subscribe((response)=>{console.log(response);
+    })
+  }
+
+  getToyByTag(){
+    let x = this.service.getToyByTag(this.postTag);
     x. subscribe((response)=>{console.log(response);
     })
   }
