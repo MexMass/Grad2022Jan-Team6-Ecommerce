@@ -13,7 +13,7 @@ router.get("/tag/:tag", getProductByTag);
 
 function getProducts(req, res) {
   pool.query(
-    `SELECT id, name, supplier_name, units_in_stock, total_price, image_url 
+    `SELECT *
     FROM products 
     WHERE discontinued = false`,
     (error, result) => {
@@ -29,7 +29,7 @@ function getProducts(req, res) {
 function getProductById(req, res) {
   const id = parseInt(req.params.id);
   pool.query(
-    `SELECT id, name, supplier_name, units_in_stock, total_price, image_url 
+    `SELECT *
     FROM products 
     WHERE id=${id} AND discontinued = false `,
     (error, result) => {
@@ -45,7 +45,7 @@ function getProductById(req, res) {
 function getProductByTag(req, res) {
   const tag = req.params.tag;
   pool.query(
-    `SELECT DISTINCT(products.id), products.name, products.supplier_name, units_in_stock, total_price, image_url
+    `SELECT DISTINCT(products.id), products.name, products.supplier_name, units_in_stock, total_price, discontinued, image_url
     FROM product_tags
     INNER JOIN products on (product_tags.product_id = products.id)
     INNER JOIN tags on (product_tags.tag_id = tags.id)
