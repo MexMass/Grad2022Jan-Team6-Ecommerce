@@ -14,16 +14,16 @@ function newDiscount(req, res) {
     VALUES ('${product_id}', '${percent}');
     `;
   
-    pool.query(myquery, (error, response) => {
+    pool.query(myquery, (error, result) => {
       
       if (error) {
           console.error(error);
           res.json({response: error.message}); // if error then send response
           return;
+      } else {
+        console.log('Data inserted into discounts table');
+        res.json({response: "Discount created."}); // if successfull then send response
       }
-  
-      console.log('Data inserted into discounts table');
-      res.json({response: "Discount created."}); // if successfull then send response
     });
   }
   
@@ -36,16 +36,16 @@ function newDiscount(req, res) {
     WHERE id = ${id};
     `;
   
-    pool.query(myquery, (error, response) => {
+    pool.query(myquery, (error, result) => {
       
       if (error) {
           console.error(error);
           res.json({response: error.message}); // if error then send response
           return;
+      } else {
+        console.log('Data deleted from discounts table');
+        res.json({response: "Discount deleted."}); // if successfull then send response
       }
-  
-      console.log('Data deleted from discounts table');
-      res.json({response: "Discount deleted."}); // if successfull then send response
     });
   }
 
