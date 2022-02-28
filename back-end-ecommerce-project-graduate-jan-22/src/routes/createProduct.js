@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.post("/create", newProduct); // endpoint - http://localhost:3000/db/create
 router.post("/addDiscount", newDiscount); // endpoint - http://localhost:3000/db/addDiscount
+router.delete("/deleteDiscount/:id", deleteDiscount); // endpoint - http://localhost:3000/db/addDiscount
 
 function newProduct(req, res) {
   const { name, supplier_name, units_in_stock, total_price, discontinued, image_url } = req.body; // get details from req.body
@@ -22,7 +23,7 @@ function newProduct(req, res) {
         return;
     }
 
-    console.log('Data insert successful');
+    console.log('Data inserted into products table');
     res.json({response: "Product " + name + " created."});
   });
 }
@@ -44,8 +45,30 @@ function newDiscount(req, res) {
         return;
     }
 
-    console.log('Data insert successful');
+    console.log('Data inserted into discounts table');
     res.json({response: "Discount created."}); // if successfull then send response
+  });
+}
+
+function deleteDiscount(req, res) {
+  const id = parseInt(req.params.id); // get id from parameters
+
+  let myquery = // query for insert
+  `
+  DELETE FROM discounts
+  WHERE id = ${id};
+  `;
+
+  pool.query(myquery, (error, response) => {
+    
+    if (error) {
+        console.error(error);
+        res.json({response: error.message}); // if error then send response
+        return;
+    }
+
+    console.log('Data deleted from discounts table');
+    res.json({response: "Discount deleted."}); // if successfull then send response
   });
 }
 
