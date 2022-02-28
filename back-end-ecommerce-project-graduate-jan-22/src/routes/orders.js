@@ -5,7 +5,7 @@ const router = express.Router();
 router.post("/addOrder", createOrder); // endpoint - http://localhost:3000/orders/addOrder
 
 function createOrder(req, res) { // inserts data in orders & order_details table. Updates products units_in_stock based on quantity of product ordered
-    const { user_id, products} = req.body; // get details from req.body
+    const { user_id, products} = req.body; // get details from req.body (products is an array)
 
     const currentDate = new Date().toISOString().slice(0, 10) // get current date
   
@@ -15,7 +15,7 @@ function createOrder(req, res) { // inserts data in orders & order_details table
     VALUES ('${user_id}', '${currentDate}') RETURNING id;
     `;
   
-    pool.query(ordersquery, (error, result) => { // run query
+    pool.query(ordersquery, (error, result) => { // run query for orders table
       
       if (error) {
           console.error(error);
@@ -24,24 +24,24 @@ function createOrder(req, res) { // inserts data in orders & order_details table
       } else {
         let createdOrderId = result.rows[0].id; // get id of newly created order 
 
-        for (let i = 0; i < products.length; i++) { // for loop for 
+        for (let i = 0; i < products.length; i++) { // for loop iterates through the products array
 
-            let order_detailsquery = // query for insert
+            let order_detailsquery = // query for insert into order_details
             `
             INSERT INTO order_details(order_id, product_id, quantity)
             VALUES ('${createdOrderId}', '${products[i].id}', '${products[i].quantity}');
             `;
 
-            pool.query(order_detailsquery, (error, result) => { // run query
+            pool.query(order_detailsquery, (error, result) => { // run query for order_details
                 
-                let updateproductsquery = // query for reducing the units_in_stock value in the products table
+                let updateproductsquery = // query for reducing the units_in_stock value in the products table based on quanity ordered
                 `
                 UPDATE products
                 SET units_in_stock = units_in_stock - ${products[i].quantity}
                 WHERE id = ${products[i].id};
                 `;
 
-                pool.query(updateproductsquery, (error, result) => { // run query
+                pool.query(updateproductsquery, (error, result) => { // run query for products table
 
                     if (error) {
                         console.error(error);
