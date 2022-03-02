@@ -1,0 +1,62 @@
+<p>create-toy works!</p>
+
+<form [formGroup]="createToyForm" (ngSubmit)="onSubmit(createToyForm.getRawValue())">
+
+    <div>
+      <label for="name">
+        Name
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+  
+    <div>
+      <label for="supplier_name">
+        Supplier name
+      </label>
+      <input id="supplier_name" type="text" formControlName="supplier_name">
+    </div>
+
+    <div>
+        <label for="units_in_stock">
+          Units in stock
+        </label>
+        <input id="units_in_stock" type="number" formControlName="units_in_stock">
+      </div>
+
+      <div>
+        <label for="total_price">
+          Total price
+        </label>
+        <input id="total_price" type="number" formControlName="total_price">
+      </div>
+
+      <div>
+        <label for="image_url">
+          Image URL
+        </label>
+        <input id="image_url" type="text" formControlName="image_url">
+      </div>
+  
+    <button class="button" type="submit">Submit</button>
+  
+  </form>
+
+<!-- <form>
+    <div class="form-group">
+        <label for="name">Product name</label>
+        <input ngModel name="name" id="name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="supplier_name">Supplier Name</label>
+        <input ngModel name="supplier_name" id="supplier_name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="units_in_stock">Units in stock</label>
+        <input ngModel name="units_in_stock" id="units_in_stock" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="total_price">Price</label>
+        <input ngModel name="name" id="total_price" type="text" class="form-control">
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form> -->
