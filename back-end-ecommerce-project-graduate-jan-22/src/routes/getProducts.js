@@ -36,7 +36,10 @@ function getProductById(req, res) {
       if (error) {
         return res.status(500).send(error);
       } else {
+        let x = res.json(result.rows);
+        console.log(x);
         return res.json(result.rows);
+
       }
     }
   );

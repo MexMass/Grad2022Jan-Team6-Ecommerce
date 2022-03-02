@@ -3,6 +3,7 @@ const pool = require("../dbconnection");
 const router = express.Router();
 
 router.post("/addOrder", createOrder); // endpoint - http://localhost:3000/orders/addOrder
+router.post("/myOrders/:id", getOrdersByUserId); // endpoint - http://localhost:3000/orders/addOrder
 
 function createOrder(req, res) { // inserts data in orders & order_details table. Updates products units_in_stock based on quantity of product ordered
     const { user_id, products} = req.body; // get details from req.body (products is an array)
@@ -67,5 +68,27 @@ function createOrder(req, res) { // inserts data in orders & order_details table
       }
     });
 }
+
+function getOrdersByUserId(req, res) {
+    const id = parseInt(req.params.id); // get id from parameters
+  
+    let myquery = // query for insert
+    `
+    SELECT * FROM orders
+    WHERE id = ${id};
+    `;
+  
+    pool.query(myquery, (error, result) => {
+      
+      if (error) {
+          console.error(error);
+          res.json({response: error.message}); // if error then send response
+          return;
+      } else {
+        console.log('Data changed in products table');
+        res.json({response: "Product with id " + id + " discontinued."})
+      }
+    });
+  }
 
 module.exports = router;

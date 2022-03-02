@@ -40,4 +40,14 @@ export class ToyService {
     observable=this.http.get<Toy[]>(tagURL);
     return observable;
   }
+  //method to create toy
+  public createToy(toy:Toy):Observable<Toy>{
+    let observable:Observable<Toy>
+    console.log(toy)
+    let createToyURL = `${this.URL}/create`
+    // observable=this.http.post<Toy>(createToyURL, JSON.stringify(toy));
+    observable=this.http.post<Toy>(createToyURL, toy);
+  //  return this.http.post<Toy>(createToyURL, JSON.stringify(toy));
+    return observable;
+  }
 }

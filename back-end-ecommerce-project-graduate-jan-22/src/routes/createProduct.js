@@ -6,12 +6,12 @@ router.post("/create", newProduct); // endpoint - http://localhost:3000/products
 router.put("/discontinue/:id", discontinueProduct); // endpoint - http://localhost:3000/products/discontinue/id
 
 function newProduct(req, res) {
-  const { name, supplier_name, units_in_stock, total_price, discontinued, image_url } = req.body; // get details from req.body
-
+  const { name, supplier_name, units_in_stock, total_price, image_url } = req.body; // get details from req.body
+  console.log(req.body);
   let myquery = // query for insert
   `
   INSERT INTO products(name, supplier_name, units_in_stock, total_price, discontinued, image_url)
-  VALUES ('${name}', '${supplier_name}', ${units_in_stock}, ${total_price}, ${discontinued}, '${image_url}');
+  VALUES ('${name}', '${supplier_name}', ${units_in_stock}, ${total_price}, false, '${image_url}');
   `;
 
   pool.query(myquery, (error, result) => { // run query

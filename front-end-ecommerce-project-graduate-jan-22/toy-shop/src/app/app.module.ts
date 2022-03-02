@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToyComponent } from './components/toy/toy.component';
 import { ToyService } from './services/toy.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { CreateToyComponent } from './components/create-toy/create-toy.component';
 
 //http://localhost:4200/
 
@@ -23,14 +24,16 @@ const routes: Routes  = [
 @NgModule({
   declarations: [
     AppComponent,
-    ToyComponent
+    ToyComponent,
+    CreateToyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   providers: [ToyService],
   bootstrap: [AppComponent]

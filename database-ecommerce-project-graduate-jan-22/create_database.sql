@@ -77,7 +77,7 @@ name VARCHAR(25),
 supplier_name VARCHAR(25),
 units_in_stock INT,
 total_price FLOAT,
-discontinued BOOLEAN,
+discontinued BOOLEAN DEFAULT false,
 image_url VARCHAR(255), -- adjusted lenght for long addresses
 PRIMARY KEY (id)
 );
