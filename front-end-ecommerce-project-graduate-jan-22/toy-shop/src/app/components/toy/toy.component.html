@@ -1,4 +1,14 @@
-<p>toy works!</p>
+<div class ="card" *ngFor = "let t of toyArray">
+    <img class="card-img-top" [src]="t.image_url" width=300px height=200px>
+    <div>
+        <h4 class="card-title">{{t.name}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{t.total_price|currency:'GBP'}}</h6>
+        <h6 class="card-subtitle">Stock: {{t.units_in_stock}}</h6>
+        <a class=" product-btn btn btn-secondary">More info</a>
+    </div>
+</div>
+<br>
+<!--
 
 <input type="text" [(ngModel)] = "postId"/>
 <br>
@@ -9,3 +19,4 @@
 <input type="text" [(ngModel)] = "postTag"/>
 <br>
 <button (click)="getToyByTag()">Get Toy By Tag</button>
+-->

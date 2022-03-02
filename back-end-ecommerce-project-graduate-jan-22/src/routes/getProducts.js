@@ -18,7 +18,7 @@ function getProducts(req, res) {
     WHERE discontinued = false`,
     (error, result) => {
       if (error) {
-        return res.status(500).send("Internal Error");
+        return res.status(500).send(error);
       } else {
         return res.json(result.rows);
       }
@@ -34,7 +34,7 @@ function getProductById(req, res) {
     WHERE id=${id} AND discontinued = false `,
     (error, result) => {
       if (error) {
-        return res.status(500).send("internal Error");
+        return res.status(500).send(error);
       } else {
         return res.json(result.rows);
       }
@@ -52,7 +52,7 @@ function getProductByTag(req, res) {
     WHERE tags.name ='${tag}' AND products.discontinued =false`,
     (error, result) => {
       if (error) {
-        return res.status(500).send("internal Error");
+        return res.status(500).send(error);
       } else {
         return res.json(result.rows);
       }

@@ -1,0 +1,12 @@
+.card {
+  display: inline-block;
+  width: 18rem;
+  height: auto;
+}
+.product-btn {
+  width: 100%;
+}
+
+.card-subtitle {
+  margin: 5px;
+}
