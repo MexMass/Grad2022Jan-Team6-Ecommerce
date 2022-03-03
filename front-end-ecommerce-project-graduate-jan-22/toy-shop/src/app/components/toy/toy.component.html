@@ -1,22 +1,12 @@
-<div class ="card" *ngFor = "let t of toyArray">
-    <img class="card-img-top" [src]="t.image_url" width=300px height=200px>
-    <div>
-        <h4 class="card-title">{{t.name}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{t.total_price|currency:'GBP'}}</h6>
-        <h6 class="card-subtitle">Stock: {{t.units_in_stock}}</h6>
-        <a [routerLink]="['/toys', t.id]" class=" product-btn btn btn-secondary">More info</a>
+<div class="">
+    <div class ="card" *ngFor = "let t of toyArray">
+        <img class="card-img-top" [src]="t.image_url" width=300px height=200px>
+        <div>
+            <h6 class="card-title text-center"><b>{{t.name}}</b></h6>
+            <h6 class="card-subtitle mb-2 text-muted text-center">{{t.total_price|currency:'GBP'}}</h6>
+            <h6 class="card-subtitle text-center">Stock: {{t.units_in_stock}}</h6>
+            <a [routerLink]="['/toys', t.id]" class=" product-btn btn btn-secondary">More info</a>
+        </div>
     </div>
 </div>
-<br>
-<!--
 
-<input type="text" [(ngModel)] = "postId"/>
-<br>
-<button (click)="getToyById()">Get Toy By Id</button>
-
-<br>
-
-<input type="text" [(ngModel)] = "postTag"/>
-<br>
-<button (click)="getToyByTag()">Get Toy By Tag</button>
--->
