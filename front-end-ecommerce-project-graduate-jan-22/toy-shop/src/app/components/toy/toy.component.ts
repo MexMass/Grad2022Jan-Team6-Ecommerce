@@ -9,31 +9,16 @@ import { Toy } from '../../model/toy';
 })
 export class ToyComponent implements OnInit {
 
-  postId: string='';
-  postTag: string='';
   toyArray:Toy[] = [];
   service:ToyService;
 
+  //Inject ToyService into contructor to allow access with backend
   constructor(service:ToyService) {
     this.service = service;
    }
 
   ngOnInit(): void {
     let x = this.service.getAllToys();
-    x. subscribe((response)=>{this.toyArray = response;
-    })
-  }
-
-  //method to get toys by id
-  getToyById(){
-    let x = this.service.getToyById(this.postId);
-    x. subscribe((response)=>{this.toyArray = response;
-    })
-  }
-
-  //method to gey toys by tag
-  getToyByTag(){
-    let x = this.service.getToyByTag(this.postTag);
     x. subscribe((response)=>{this.toyArray = response;
     })
   }

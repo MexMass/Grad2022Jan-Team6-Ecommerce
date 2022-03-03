@@ -1,1 +1,7 @@
-<p>toy-details works!</p>
+<div *ngFor="let t of toy">
+    <img [src]="t.image_url">
+    <p>{{t.name}}</p>
+    <p>{{t.units_in_stock}}</p>
+    <p>{{t.total_price | currency:'GBP'}}</p>
+    <p>{{t.supplier_name}}</p>
+</div>

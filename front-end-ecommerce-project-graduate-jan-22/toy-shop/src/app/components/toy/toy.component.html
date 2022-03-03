@@ -4,7 +4,7 @@
         <h4 class="card-title">{{t.name}}</h4>
         <h6 class="card-subtitle mb-2 text-muted">{{t.total_price|currency:'GBP'}}</h6>
         <h6 class="card-subtitle">Stock: {{t.units_in_stock}}</h6>
-        <a class=" product-btn btn btn-secondary">More info</a>
+        <a [routerLink]="['/toys', t.id]" class=" product-btn btn btn-secondary">More info</a>
     </div>
 </div>
 <br>
