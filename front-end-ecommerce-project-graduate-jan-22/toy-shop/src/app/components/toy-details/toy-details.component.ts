@@ -22,10 +22,10 @@ export class ToyDetailsComponent implements OnInit {
     
 
   ngOnInit(): void {
+    //get toy id from route snapshot
     this.postId = this.activeroute.snapshot.paramMap.get('id');
+    //uses id to get the details of the product
     this.getToyById();
-    console.log(this.toy);
-    
     
   }
 

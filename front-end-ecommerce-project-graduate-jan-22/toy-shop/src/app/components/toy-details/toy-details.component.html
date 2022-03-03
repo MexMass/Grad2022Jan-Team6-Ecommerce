@@ -1,7 +1,21 @@
-<div *ngFor="let t of toy">
-    <img [src]="t.image_url">
-    <p>{{t.name}}</p>
-    <p>{{t.units_in_stock}}</p>
-    <p>{{t.total_price | currency:'GBP'}}</p>
-    <p>{{t.supplier_name}}</p>
+<div class="container" *ngFor="let t of toy">
+    <div class="row ">
+        <div class="col d-flex justify-content-cente">
+            <img class="img-thumbnail toy-img" [src]="t.image_url">
+        </div>
+        <div class="col text-center">
+            <h3>{{t.name}}</h3>
+            <h4>Stock: {{t.units_in_stock}}</h4>
+            <h4>Price: {{t.total_price | currency:'GBP'}}</h4>
+            <h6>{{t.supplier_name}}</h6>
+
+            <a class=" cart-btn btn btn-secondary">Add to Cart</a>
+        
+        </div>
+    </div>
+    <div class="row">
+        <a [routerLink] = "['/toys']" class="col-2 product-btn btn btn-secondary">Return to Toys</a>
+    </div>
+    
+
 </div>
