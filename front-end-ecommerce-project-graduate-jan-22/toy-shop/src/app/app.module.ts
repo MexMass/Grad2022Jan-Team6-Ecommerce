@@ -15,6 +15,7 @@ import { CreateToyComponent } from './components/create-toy/create-toy.component
 const routes: Routes  = [
   //{path: 'home' , component: HomeComponent},
   // {path : 'login' , component :LoginComponent },
+  {path : 'toys/create' , component :CreateToyComponent},
   {path : 'toys', component : ToyComponent},
   //{path: 'menu/:id/name/:name', component: ProductDetailComponent},
   //{path: '', redirectTo: '/home', pathMatch: 'full'},
