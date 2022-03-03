@@ -16,7 +16,7 @@ export class CreateToyComponent implements OnInit {
     units_in_stock: ['', [Validators.required, Validators.min(1)]],
     total_price: ['', [Validators.required, Validators.min(1)]],
     image_url: ['', Validators.required],
-    tags: [this.formBuilder.array([]),[Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
+    tags: [this.formBuilder.array([]),[Validators.required, Validators.minLength(1)]],
   })
 
   constructor(
