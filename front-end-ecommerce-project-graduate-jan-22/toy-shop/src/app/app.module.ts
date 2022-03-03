@@ -9,6 +9,7 @@ import { ToyComponent } from './components/toy/toy.component';
 import { ToyService } from './services/toy.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CreateToyComponent } from './components/create-toy/create-toy.component';
+import { ToyDetailsComponent } from './components/toy-details/toy-details.component';
 
 //http://localhost:4200/
 
@@ -17,7 +18,7 @@ const routes: Routes  = [
   // {path : 'login' , component :LoginComponent },
   {path : 'toys/create' , component :CreateToyComponent},
   {path : 'toys', component : ToyComponent},
-  //{path: 'menu/:id/name/:name', component: ProductDetailComponent},
+  {path: 'toys/:id', component: ToyDetailsComponent},
   //{path: '', redirectTo: '/home', pathMatch: 'full'},
   //{path: '**', component: PagenotfoundComponent}
 ];
@@ -26,7 +27,8 @@ const routes: Routes  = [
   declarations: [
     AppComponent,
     ToyComponent,
-    CreateToyComponent
+    CreateToyComponent,
+    ToyDetailsComponent
   ],
   imports: [
     BrowserModule,
