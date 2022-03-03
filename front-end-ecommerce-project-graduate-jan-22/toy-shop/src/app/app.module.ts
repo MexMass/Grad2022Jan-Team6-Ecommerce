@@ -13,17 +13,17 @@ import { ToyDetailsComponent } from './components/toy-details/toy-details.compon
 import { TagComponent } from './components/tag/tag.component';
 import { SearchComponent } from './components/search/search.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { HomeComponent } from './components/home/home.component';
 
 //http://localhost:4200/
-
+//array containing routing paths
 const routes: Routes  = [
-  //{path: 'home' , component: HomeComponent},
-  //{path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home' , component: HomeComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path : 'toys/tag/:tag' , component :TagComponent },
   {path : 'toys/create' , component :CreateToyComponent},
   {path : 'toys', component : ToyComponent},
   {path: 'toys/:id', component: ToyDetailsComponent},
-  
   {path: '**', component: PagenotfoundComponent}
 ];
 
@@ -35,7 +35,8 @@ const routes: Routes  = [
     ToyDetailsComponent,
     TagComponent,
     SearchComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
