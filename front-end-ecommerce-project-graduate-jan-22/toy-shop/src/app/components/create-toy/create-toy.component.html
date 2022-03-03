@@ -1,62 +1,74 @@
-<p>create-toy works!</p>
-
 <form [formGroup]="createToyForm" (ngSubmit)="onSubmit(createToyForm.getRawValue())">
 
-    <div>
+    <div class="form-group">
       <label for="name">
-        Name
+        Name: <input class="form-control" id="name" type="text" formControlName="name" placeholder="Enter name">
+        <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger">
+          <div *ngIf="name?.errors?.['required']">Name is required.</div>
+          <div *ngIf="name?.errors?.['minlength']">Name should be at least 3 letters.</div>
+          <div *ngIf="name?.errors?.['maxlength']">Name should be less than 25 letters.</div>
+        </div>
       </label>
-      <input id="name" type="text" formControlName="name">
+
     </div>
   
-    <div>
+    <div class="form-group">
       <label for="supplier_name">
-        Supplier name
+        Supplier name: <input class="form-control" id="supplier_name" type="text" formControlName="supplier_name" placeholder="Enter supplier name">
+        <div *ngIf="supplier_name?.touched && supplier_name?.invalid" class="alert alert-danger">
+          <div *ngIf="supplier_name?.errors?.['required']">Supplier name is required.</div>
+          <div *ngIf="supplier_name?.errors?.['minlength']">Supplier name should be at least 3 letters.</div>
+          <div *ngIf="supplier_name?.errors?.['maxlength']">Name should be less than 25 letters.</div>
+        </div>
       </label>
-      <input id="supplier_name" type="text" formControlName="supplier_name">
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="units_in_stock">
-          Units in stock
+          Units in stock: <input class="form-control" id="units_in_stock" type="number" formControlName="units_in_stock" placeholder="Enter units in stock">
+          <div *ngIf="units_in_stock?.touched && units_in_stock?.invalid" class="alert alert-danger">
+          <div *ngIf="units_in_stock?.errors?.['required']">Units in stock is required.</div>
+          <div *ngIf="units_in_stock?.errors?.['min']">Units in stock cannot be less than 1.</div>
+        </div>
         </label>
-        <input id="units_in_stock" type="number" formControlName="units_in_stock">
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="total_price">
-          Total price
+          Total price: <input class="form-control" id="total_price" type="number" formControlName="total_price" placeholder="Enter total price">
+          <div *ngIf="total_price?.touched && total_price?.invalid" class="alert alert-danger">
+          <div *ngIf="total_price?.errors?.['required']">Price is required.</div>
+          <div *ngIf="total_price?.errors?.['min']">Price cannot be less than 1.</div>
+        </div>
         </label>
-        <input id="total_price" type="number" formControlName="total_price">
       </div>
 
       <div>
         <label for="image_url">
-          Image URL
+          Image URL: <input class="form-control" id="image_url" type="text" formControlName="image_url" placeholder="Enter image url">
+          <div *ngIf="image_url?.touched && image_url?.invalid" class="alert alert-danger">
+          <div *ngIf="image_url?.errors?.['required']">Image is required.</div>
+        </div>
         </label>
-        <input id="image_url" type="text" formControlName="image_url">
       </div>
   
-    <button class="button" type="submit">Submit</button>
-  
-  </form>
+      <div>
+        <label for="tags">
+          Tags:<select multiple class="form-control" id="tags" formControlName="tags">
+            <option value="1">Action Hero</option>
+            <option value="2">Soft Toy</option>
+            <option value="3">Puzzle</option>
+            <option value="4">Video Game</option>
+            <option value="5">Science</option>
+            <option value="6">Ages 0-6</option>
+            <option value="7">Ages 6-12</option>
+            <option value="8">Ages 12+</option>
+          </select>
+        </label>
+      </div>
 
-<!-- <form>
-    <div class="form-group">
-        <label for="name">Product name</label>
-        <input ngModel name="name" id="name" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="supplier_name">Supplier Name</label>
-        <input ngModel name="supplier_name" id="supplier_name" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="units_in_stock">Units in stock</label>
-        <input ngModel name="units_in_stock" id="units_in_stock" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="total_price">Price</label>
-        <input ngModel name="name" id="total_price" type="text" class="form-control">
-    </div>
-    <button class="btn btn-primary">Submit</button>
-</form> -->
+    <button class="btn btn-primary" type="submit" [disabled]="!createToyForm.valid">Submit</button>
+    <p>
+      Your form status is : {{ createToyForm.status }}
+    </p>
+  </form>
