@@ -12,17 +12,19 @@ import { CreateToyComponent } from './components/create-toy/create-toy.component
 import { ToyDetailsComponent } from './components/toy-details/toy-details.component';
 import { TagComponent } from './components/tag/tag.component';
 import { SearchComponent } from './components/search/search.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 //http://localhost:4200/
 
 const routes: Routes  = [
   //{path: 'home' , component: HomeComponent},
+  //{path: '', redirectTo: '/home', pathMatch: 'full'},
   {path : 'toys/tag/:tag' , component :TagComponent },
   {path : 'toys/create' , component :CreateToyComponent},
   {path : 'toys', component : ToyComponent},
   {path: 'toys/:id', component: ToyDetailsComponent},
-  //{path: '', redirectTo: '/home', pathMatch: 'full'},
-  //{path: '**', component: PagenotfoundComponent}
+  
+  {path: '**', component: PagenotfoundComponent}
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const routes: Routes  = [
     CreateToyComponent,
     ToyDetailsComponent,
     TagComponent,
-    SearchComponent
+    SearchComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
