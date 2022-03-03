@@ -1,4 +1,4 @@
-/* label {
+label {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -8,6 +8,9 @@
   margin-bottom: 10px;
 }
 
+.alert {
+  width: 400px;
+}
 button {
   margin-left: 12.5em;
 }
@@ -16,4 +19,4 @@ input {
   height: 35px;
   flex: 0 0 200px;
   margin-left: 10px;
-} */
+}
