@@ -12,12 +12,16 @@ export class ToyComponent implements OnInit {
   toyArray:Toy[] = [];
   service:ToyService;
 
-  //Inject ToyService into contructor to allow access with backend
+  //Inject and initialise ToyService into contructor to allow access with backend
   constructor(service:ToyService) {
     this.service = service;
    }
 
   ngOnInit(): void {
+    this.getToys();
+  }
+
+  getToys(){
     let x = this.service.getAllToys();
     x. subscribe((response)=>{this.toyArray = response;
     })
