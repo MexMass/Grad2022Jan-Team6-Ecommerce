@@ -9,15 +9,17 @@ import { ToyService } from 'src/app/services/toy.service';
   styleUrls: ['./create-toy.component.css']
 })
 export class CreateToyComponent implements OnInit {
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+
   createToyForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     supplier_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     units_in_stock: ['', [Validators.required, Validators.min(1)]],
     total_price: ['', [Validators.required, Validators.min(1)]],
     image_url: ['', Validators.required],
-    tags: [this.formBuilder.array([]),[Validators.required, Validators.minLength(1)]],
+    tags: [this.formBuilder.array([]),Validators.required]
   })
+
+  myresponse : String = '';
 
   constructor(
     private service: ToyService,
@@ -29,10 +31,10 @@ export class CreateToyComponent implements OnInit {
 
   onSubmit(instance: Toy){
     let x = this.service.createToy(instance)
-    x.subscribe((response)=>{console.log(response)
+    x.subscribe((response)=>{console.log("response is = " + response);
+    this.myresponse = response.response;
     })
     
-    // console.warn('Your order has been submitted', this.createToyForm.value);
     this.createToyForm.reset()
   }
   // get functions for shortening the reference to values

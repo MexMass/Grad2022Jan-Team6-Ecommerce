@@ -11,6 +11,13 @@ label {
 .alert {
   width: 400px;
 }
+.response {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: auto;
+  text-align: center;
+}
+
 button {
   margin-left: 12.5em;
 }
