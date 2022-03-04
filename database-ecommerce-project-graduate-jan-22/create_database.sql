@@ -67,8 +67,10 @@ CREATE TABLE tags (
 id SERIAL NOT NULL,
 name VARCHAR(25),
 PRIMARY KEY (id)
-);
+); 
 
+---Table:LoginDeatils
+create table login_details(userid int, password varchar(30), foreign key(user id), refernces users(userid));
 
 --Table:products
 CREATE TABLE products (
