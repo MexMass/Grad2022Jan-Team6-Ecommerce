@@ -24,7 +24,6 @@ const routes: Routes  = [
   {path : 'toys/create' , component :CreateToyComponent},
   {path : 'toys', component : ToyComponent},
   {path: 'toys/:id', component: ToyDetailsComponent},
-  {path: 'toys/create', component: CreateToyComponent},
   {path: '**', component: PagenotfoundComponent}
 
 ];
