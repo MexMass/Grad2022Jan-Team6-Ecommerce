@@ -43,7 +43,7 @@ function newProduct(req, res) {
 
       }
       console.log('Data inserted into products table');
-      res.json({response: "Product " + name + " created."});
+      res.json({response: "Product with name '" + name + "' created."});
     }
   });
 }

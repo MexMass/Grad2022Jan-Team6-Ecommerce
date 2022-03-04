@@ -1,10 +1,11 @@
-<form [formGroup]="createToyForm" (ngSubmit)="onSubmit(createToyForm.getRawValue())" class="card" style="display: flex;">
+<form [formGroup]="createToyForm" (ngSubmit)="onSubmit(createToyForm.getRawValue())" class="card">
+
   <div class="row">
     <div class="form-group col">
       <label for="name">
         Name: <input class="form-control" id="name" type="text" formControlName="name" placeholder="Enter name">
       </label>
-      <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger test">
+      <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger">
         <div *ngIf="name?.errors?.['required']">Name is required.</div>
         <div *ngIf="name?.errors?.['minlength']">Name should be at least 3 letters.</div>
         <div *ngIf="name?.errors?.['maxlength']">Name should be less than 25 letters.</div>
@@ -69,13 +70,22 @@
         </label>
         <div *ngIf="tags?.touched && tags?.invalid" class="alert alert-danger">
           <div *ngIf="tags?.errors?.['required']">Tags are required.</div>
-          <div *ngIf="tags?.errors?.['minlength']">Product must have at least 2 tags.</div>
-          <div *ngIf="tags?.errors?.['maxlength']">Product cannot have more than 3 tags.</div>
         </div>
       </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <p *ngIf="!createToyForm.valid" class="alert alert-danger">
+        Your form status is : <b>{{ createToyForm.status }}</b>
+      </p>
+      <p *ngIf="createToyForm.valid" class="alert alert-success">
+        Your form status is : <b>{{ createToyForm.status }}</b>
+      </p>
+    </div>
+    <div class="col">
     <button class="btn btn-primary" type="submit" [disabled]="!createToyForm.valid">Submit</button>
-    <p>
-      Your form status is : {{ createToyForm.status }}
-    </p>
+  </div>
+  </div>
+  <p *ngIf="myresponse !== ''" class="alert alert-success response"> {{ myresponse }}
+  </p>
   </form>
