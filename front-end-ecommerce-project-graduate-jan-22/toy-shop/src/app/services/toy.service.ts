@@ -41,10 +41,9 @@ export class ToyService {
     return observable;
   }
   //method to create toy
-  public createToy(toy:Toy):Observable<any>{
-    let observable:any
-    let createToyURL = `${this.URL}/create`
-    observable=this.http.post<any>(createToyURL, toy);
+  public createToy(toy:Toy):Observable<any>{ // return 
+    let createToyURL = `${this.URL}/create` // form url http://localhost:3000/products/create
+    let observable=this.http.post(createToyURL, toy); // send post request with toy values in the request body
     return observable;
   }
 }

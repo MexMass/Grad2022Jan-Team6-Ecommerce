@@ -7,14 +7,13 @@ router.put("/discontinue/:id", discontinueProduct); // endpoint - http://localho
 
 function newProduct(req, res) {
   const { name, supplier_name, units_in_stock, total_price, image_url, tags} = req.body; // get details from req.body
-  console.log(req.body);
-  let myquery = // query for insert
+  let productsquery = // query for insert
   `
   INSERT INTO products(name, supplier_name, units_in_stock, total_price, discontinued, image_url)
   VALUES ('${name}', '${supplier_name}', ${units_in_stock}, ${total_price}, false, '${image_url}') RETURNING id;
   `;
 
-  pool.query(myquery, (error, result) => { // run query
+  pool.query(productsquery, (error, result) => { // run query for products table
     
     if (error) {
         console.error(error);
@@ -22,15 +21,15 @@ function newProduct(req, res) {
         return;
     }else {
       let createdProductId = result.rows[0].id; // get id of newly created product 
-      for (let i = 0; i < tags.length; i++) { // for loop iterates through the products array
+      for (let i = 0; i < tags.length; i++) { // for loop iterates through the tags array
 
-        let product_tagsquery = // query for insert into order_details
+        let product_tagsquery = // query for insert into product_tags table
         `
         INSERT INTO product_tags(product_id, tag_id)
         VALUES ('${createdProductId}', '${tags[i]}');
         `;
 
-        pool.query(product_tagsquery, (error, result) => { // run query for order_details
+        pool.query(product_tagsquery, (error, result) => { // run query for product_tags table
             
             if (error) {
                 console.error(error);
