@@ -13,7 +13,7 @@ const app = express();
 // vice-versa for every reponse JSON into bytes. Works with POST and PUT/PATCH
 app.use(bodyParser.json());
 
-// custom middleware2
+// custom middleware, that logs the type of request that is made to the server
 app.use((req, res, next) => {
   console.log("Incoming Request Middleware" + req.body);
   next();
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// middleware - use()
+// middleware that handles the routing of the nodeJs server
 app.use("/products", postProductRoute);
 app.use("/products", getProductRouter);
 app.use("/discounts", discountRouter);

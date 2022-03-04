@@ -11,12 +11,14 @@ router.get("/:id", getProductById);
 //tag url - returns all products matching the tag
 router.get("/tag/:tag", getProductByTag);
 
+//select all products from the database that are not discontinued
 function getProducts(req, res) {
   pool.query(
     `SELECT *
     FROM products 
     WHERE discontinued = false`,
     (error, result) => {
+      //if there is an error, return the error in the response
       if (error) {
         return res.status(500).send(error);
       } else {
@@ -26,6 +28,7 @@ function getProducts(req, res) {
   );
 }
 
+//select all products from the database that are not discontinued and match the requested id
 function getProductById(req, res) {
   const id = parseInt(req.params.id);
   pool.query(
@@ -33,6 +36,7 @@ function getProductById(req, res) {
     FROM products 
     WHERE id=${id} AND discontinued = false `,
     (error, result) => {
+      //if there is an error, return the error in the response
       if (error) {
         return res.status(500).send(error);
       } else {
@@ -42,6 +46,7 @@ function getProductById(req, res) {
   );
 }
 
+//select all products from the database that are not discontinued and match the requested tag
 function getProductByTag(req, res) {
   const tag = req.params.tag;
   pool.query(
@@ -51,6 +56,7 @@ function getProductByTag(req, res) {
     INNER JOIN tags on (product_tags.tag_id = tags.id)
     WHERE tags.name ='${tag}' AND products.discontinued =false`,
     (error, result) => {
+      //if there is an error, return the error in the response
       if (error) {
         return res.status(500).send(error);
       } else {

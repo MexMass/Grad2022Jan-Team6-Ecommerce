@@ -15,6 +15,7 @@ export class ToyDetailsComponent implements OnInit {
   postId:any;
   toy:Toy[]=[];
 
+  //Inject and initialise ToyService into contructor to allow access with backend
   constructor(activeroute:ActivatedRoute,service:ToyService) {
     this.service=service; 
     this.activeroute = activeroute;
@@ -29,7 +30,7 @@ export class ToyDetailsComponent implements OnInit {
     
   }
 
-  //method to get toys by id
+  //Use toy service to access backend, and retrieve the products by their id
   getToyById(){
     let x = this.service.getToyById(this.postId);
     x. subscribe((response)=>{this.toy = response;

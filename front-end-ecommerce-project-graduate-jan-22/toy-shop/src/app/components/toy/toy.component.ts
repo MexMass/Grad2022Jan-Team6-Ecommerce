@@ -21,6 +21,7 @@ export class ToyComponent implements OnInit {
     this.getToys();
   }
 
+    //Use toy service to access backend, and retrieve all products
   getToys(){
     let x = this.service.getAllToys();
     x. subscribe((response)=>{this.toyArray = response;
