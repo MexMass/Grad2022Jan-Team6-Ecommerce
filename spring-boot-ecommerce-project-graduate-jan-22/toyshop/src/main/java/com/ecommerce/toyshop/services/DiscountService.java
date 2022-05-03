@@ -3,11 +3,11 @@ package com.ecommerce.toyshop.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ecommerce.toyshop.repositories.ProductRepository;
+import com.ecommerce.toyshop.repositories.DiscountRepository;
 
 @Service
-public class ProductService {
+public class DiscountService {
 	
 	@Autowired
-	private ProductRepository repository;
+	private DiscountRepository repository;
 }
