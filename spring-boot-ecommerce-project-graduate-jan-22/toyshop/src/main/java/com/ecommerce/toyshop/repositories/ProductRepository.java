@@ -1,5 +1,8 @@
 package com.ecommerce.toyshop.repositories;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public class ProductRepository {
+import com.ecommerce.toyshop.entities.Product;
+
+public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
 
 }
