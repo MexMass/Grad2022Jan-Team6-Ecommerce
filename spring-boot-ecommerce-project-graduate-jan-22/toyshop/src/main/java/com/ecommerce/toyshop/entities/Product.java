@@ -6,8 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="products")
 public class Product {
+	
 	@Id
 	private long id;
 	
@@ -24,6 +25,21 @@ public class Product {
 	
 	private boolean discontinued;
 	
+	
+	public Product() {
+	}
+
+	public Product(long id, String name, String supplierName, int unitsInStock, int unitPrice, boolean discontinued,
+			String imageUrl) {
+		this.id = id;
+		this.name = name;
+		this.supplierName = supplierName;
+		this.unitsInStock = unitsInStock;
+		this.unitPrice = unitPrice;
+		this.discontinued = discontinued;
+		this.imageUrl = imageUrl;
+	}
+
 	public long getId() {
 		return id;
 	}
