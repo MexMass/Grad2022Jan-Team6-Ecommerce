@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Toy } from '../model/toy';
@@ -6,9 +6,11 @@ import { Toy } from '../model/toy';
 @Injectable()
 export class ToyService {
     http:HttpClient;
+
+    
   
     //string containing URL of backend server
-    URL : string = "http://localhost:3000/products";
+    URL : string = "http://localhost:8080/api/v1/products";
 
 
     //using HttpCLient, inject the service into the constructor, allowing access to backend server
@@ -41,9 +43,10 @@ export class ToyService {
     return observable;
   }
   //method to create toy
-  public createToy(toy:Toy):Observable<any>{ // return 
-    let createToyURL = `${this.URL}/create` // form url http://localhost:3000/products/create
+  public createToy(toy:Toy):Observable<any>{ // 
+    let createToyURL = `${this.URL}/create` // form url http://localhost:8080/api/v1/products/create
     let observable=this.http.post(createToyURL, toy); // send post request with toy values in the request body
+    console.log(toy);
     return observable;
   }
 }

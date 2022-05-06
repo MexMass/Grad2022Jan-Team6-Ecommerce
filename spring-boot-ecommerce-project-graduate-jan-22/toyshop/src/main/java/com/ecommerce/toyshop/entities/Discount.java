@@ -12,16 +12,16 @@ public class Discount {
 	@Id
 	private long id;
 	
-	private Product product;
+	private long product_id;
 	
 	private int percent;
 	
 	public Discount() {
 	}
 
-	public Discount(long id, Product product, int percent) {
+	public Discount(long id, long product_id, int percent) {
 		this.id = id;
-		this.product = product;
+		this.product_id = product_id;
 		this.percent = percent;
 	}
 
@@ -33,12 +33,13 @@ public class Discount {
 		this.id = id;
 	}
 
-	public Product getProduct() {
-		return product;
+
+	public long getProduct_id() {
+		return product_id;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProduct_id(long product_id) {
+		this.product_id = product_id;
 	}
 
 	public int getPercent() {

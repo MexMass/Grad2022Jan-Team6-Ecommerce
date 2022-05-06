@@ -56,18 +56,20 @@
           <div *ngIf="image_url?.errors?.['required']">Image is required.</div>
         </div>
       </div>
+
+      <input id="discontinued" type="hidden" formControlName="discontinued" value="false">
   
       <div class="col">
         <label for="tags">
           Tags:<select multiple class="form-control" id="tags" formControlName="tags">
-            <option value="1">Action Hero</option>
-            <option value="2">Soft Toy</option>
-            <option value="3">Puzzle</option>
-            <option value="4">Video Game</option>
-            <option value="5">Science</option>
-            <option value="6">Ages 0-6</option>
-            <option value="7">Ages 6-12</option>
-            <option value="8">Ages 12+</option>
+            <option value="actionhero">Action Hero</option>
+            <option value="softtoy">Soft Toy</option>
+            <option value="puzzle">Puzzle</option>
+            <option value="videogame">Video Game</option>
+            <option value="science">Science</option>
+            <option value="age0to6">Ages 0-6</option>
+            <option value="age6to12">Ages 6-12</option>
+            <option value="age12plus">Ages 12+</option>
           </select>
         </label>
         <div *ngIf="tags?.touched && tags?.invalid" class="alert alert-danger">
@@ -77,9 +79,9 @@
   </div>
   <div class="row">
     <div class="col">
-      <p *ngIf="!createToyForm.valid" class="alert alert-danger">
+      <!-- <p *ngIf="!createToyForm.valid" class="alert alert-danger">
         Your form status is : <b>{{ createToyForm.status }}</b>
-      </p>
+      </p> -->
       <p *ngIf="createToyForm.valid" class="alert alert-success">
         Your form status is : <b>{{ createToyForm.status }}</b>
       </p>
@@ -90,3 +92,5 @@
   </div>
 
   </form>
+
+  
