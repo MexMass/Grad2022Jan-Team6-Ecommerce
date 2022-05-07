@@ -1,7 +1,12 @@
 package com.ecommerce.toyshop.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,8 +15,11 @@ public class Discount {
 	
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Product product;
 	
 	private int percent;
