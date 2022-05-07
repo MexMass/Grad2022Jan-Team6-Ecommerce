@@ -11,9 +11,9 @@ public class Review {
 	@Id
 	private long id;
 	
-	private User user;
+	private long user_id;
 	
-	private Product product;
+	private long product_id;
 	
 	private int score;
 	
@@ -23,10 +23,10 @@ public class Review {
 	public Review() {
 	}
 
-	public Review(long id, User user, Product product, int score, String description) {
+	public Review(long id, long user_id, long product_id, int score, String description) {
 		this.id = id;
-		this.user = user;
-		this.product = product;
+		this.user_id = user_id;
+		this.product_id = product_id;
 		this.score = score;
 		this.description = description;
 	}
@@ -39,20 +39,21 @@ public class Review {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+
+	public long getUser_id() {
+		return user_id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser_id(long user_id) {
+		this.user_id = user_id;
 	}
 
-	public Product getProduct() {
-		return product;
+	public long getProduct_id() {
+		return product_id;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProduct_id(long product_id) {
+		this.product_id = product_id;
 	}
 
 	public int getScore() {

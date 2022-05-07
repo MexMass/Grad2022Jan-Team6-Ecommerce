@@ -15,8 +15,9 @@ export class CreateToyComponent implements OnInit {
     supplier_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     units_in_stock: ['', [Validators.required, Validators.min(1)]],
     total_price: ['', [Validators.required, Validators.min(1)]],
-    image_url: ['', Validators.required],
-    tags: [this.formBuilder.array([]),Validators.required]
+    tags: [this.formBuilder.array([]),Validators.required],
+    discontinued: [false],
+    image_url: ['', Validators.required]
   })
 
   myresponse : String = ''; // storage of response from back-end
@@ -32,7 +33,8 @@ export class CreateToyComponent implements OnInit {
   onSubmit(instance: Toy){ // get toy form values
     let x = this.service.createToy(instance) // call createToy function and pass form details
     x.subscribe((response)=>{this.myresponse = response.response; // subscribe and wait for response. Store response
-    })
+    console.log(response)
+  })
     
     this.createToyForm.reset() // reset form
   }
@@ -48,6 +50,9 @@ export class CreateToyComponent implements OnInit {
   }
   get total_price() {
     return this.createToyForm.get('total_price');
+  }
+  get discontinued() {
+    return this.createToyForm.get('discontinued');
   }
   get image_url() {
     return this.createToyForm.get('image_url');
