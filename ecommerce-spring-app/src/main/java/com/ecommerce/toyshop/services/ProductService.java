@@ -65,6 +65,7 @@ public class ProductService {
 	//returns all products
 	public List<Product> findAll() {
 		return productRepository.findAllNotDiscontinuedNoPage();
+
 	}
 	
 	//find product by id

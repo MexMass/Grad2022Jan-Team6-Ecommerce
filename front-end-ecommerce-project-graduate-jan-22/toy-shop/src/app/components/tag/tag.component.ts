@@ -30,7 +30,7 @@ export class TagComponent implements OnInit {
   //Use toy service to access backend, and retrieve the products by their tags
   getToyByTag(){
     let x = this.service.getToyByTag(this.postTag);
-    x. subscribe((response)=>{this.toyArray = response;
+    x.subscribe((response)=>{this.toyArray = response;
     })
   }
 
