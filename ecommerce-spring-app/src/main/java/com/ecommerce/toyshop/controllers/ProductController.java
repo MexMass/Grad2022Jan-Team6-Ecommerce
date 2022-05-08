@@ -42,7 +42,7 @@ public class ProductController {
 	
 	@GetMapping("/products")
 	public ResponseEntity<List<Product>> getAllProducts() {
-		List<Product> products = productService.getAllProducts();
+		List<Product> products = productService.findAll();
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
 	
@@ -50,6 +50,12 @@ public class ProductController {
 	public Optional<Product> getProductById(@PathVariable("id") Long id) {
 		Optional<Product> product = productService.findById(id);
 		return product;
+	}
+	
+	@GetMapping(value = "/products/{tag}", produces = "application/json")
+	public Iterable<Product> getProductByTag(@PathVariable("id") String tag) {
+		Iterable<Product> products = productService.findAllByTag(tag);
+		return products;
 	}
 
 	@PostMapping(value = "/products/create",  consumes = "application/json")

@@ -63,8 +63,8 @@ public class ProductService {
 	// BELOW IMPORTED FROM OTHER PROJECT
 	
 	//returns all products
-	public Iterable<Product> findAll() {
-		return productRepository.findAll();
+	public List<Product> findAll() {
+		return productRepository.findAllNotDiscontinuedNoPage();
 	}
 	
 	//find product by id
@@ -73,7 +73,7 @@ public class ProductService {
 	}
 	
 	//find all product of a specific tag
-	public Iterable<Product> findAllByTag(String tag){
+	public List<Product> findAllByTag(String tag){
 		return productRepository.findAllByTag(tag);
 	}
 
