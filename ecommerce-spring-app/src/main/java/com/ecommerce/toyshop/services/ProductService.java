@@ -63,7 +63,7 @@ public class ProductService {
 	// BELOW IMPORTED FROM OTHER PROJECT
 	
 	//returns all products
-	public Iterable<Product> findAll() {
+	public List<Product> findAll() {
 		return productRepository.findAll();
 	}
 	
