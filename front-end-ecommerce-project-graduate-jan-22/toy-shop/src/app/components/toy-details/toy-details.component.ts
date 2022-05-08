@@ -13,7 +13,15 @@ export class ToyDetailsComponent implements OnInit {
   service:ToyService;
   activeroute: ActivatedRoute;
   postId:any;
-  toy:Toy[]=[];
+  toy:Toy = {
+    id: 0,
+    name: '',
+    supplier_name: '',
+    units_in_stock: 0,
+    total_price: 0,
+    discontinued: false,
+    image_url: ''
+  };
 
   //Inject and initialise ToyService into contructor to allow access with backend
   constructor(activeroute:ActivatedRoute,service:ToyService) {

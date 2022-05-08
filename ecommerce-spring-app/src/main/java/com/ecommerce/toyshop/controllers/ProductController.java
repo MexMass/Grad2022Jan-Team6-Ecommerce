@@ -1,12 +1,14 @@
 package com.ecommerce.toyshop.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,14 +45,18 @@ public class ProductController {
 		List<Product> products = productService.getAllProducts();
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/products/{id}", produces = "application/json")
+	public Optional<Product> getProductById(@PathVariable("id") Long id) {
+		Optional<Product> product = productService.findById(id);
+		return product;
+	}
 
 	@PostMapping(value = "/products/create",  consumes = "application/json")
 	@ResponseBody // binds method return value to the web response body
 	public ResponseEntity<String> createProduct(@RequestBody ProductDto productDto) { // get product details from request body
 		productService.addNewProduct(productDto);
 		return new ResponseEntity<String>("{\"response\": \"Product with name '" + productDto.getName() + "' created\"}",HttpStatus.CREATED); // send response back to front end
-
-		
 	}
 	
 }

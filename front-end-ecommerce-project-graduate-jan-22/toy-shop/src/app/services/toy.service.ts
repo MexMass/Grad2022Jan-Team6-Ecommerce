@@ -26,10 +26,10 @@ export class ToyService {
   }
 
   //method to fetch a toy by id
-  public getToyById(id:string):Observable<Toy[]>{
-    let observable:Observable<Toy[]>
+  public getToyById(id:number):Observable<Toy>{
+    let observable:Observable<Toy>
     let idURL = `${this.URL}/${id}`
-    observable=this.http.get<Toy[]>(idURL);
+    observable=this.http.get<Toy>(idURL);
     return observable;
   }
 

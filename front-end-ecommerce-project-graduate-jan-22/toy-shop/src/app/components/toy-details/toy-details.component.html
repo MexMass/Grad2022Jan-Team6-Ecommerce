@@ -1,14 +1,14 @@
 <div id="detail-wrap">
-<div class="container" *ngFor="let t of toy">
+<div class="container">
     <div class="row ">
         <div class="col d-flex justify-content-cente">
-            <img class="img-thumbnail toy-img" [src]="t.image_url">
+            <img class="img-thumbnail toy-img" [src]="toy.image_url">
         </div>
         <div class="col text-center">
-            <h3>{{t.name}}</h3>
-            <h4>Stock: {{t.units_in_stock}}</h4>
-            <h4>Price: {{t.total_price | currency:'GBP'}}</h4>
-            <h6>{{t.supplier_name}}</h6>
+            <h3>{{toy.name}}</h3>
+            <h4>Stock: {{toy.units_in_stock}}</h4>
+            <h4>Price: {{toy.total_price | currency:'GBP'}}</h4>
+            <h6>{{toy.supplier_name}}</h6>
 
             <a class=" cart-btn btn btn-secondary">Add to Cart</a>
         

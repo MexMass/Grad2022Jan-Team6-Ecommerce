@@ -38,7 +38,6 @@ public class ProductService {
 		List<Product> products = page.getContent();
 
 		return products;
-
 	}
 	
 	public List<Product> getAllProducts() {
