@@ -64,7 +64,8 @@ public class ProductService {
 	
 	//returns all products
 	public List<Product> findAll() {
-		return productRepository.findAll();
+		return productRepository.findAllNotDiscontinuedNoPage();
+
 	}
 	
 	//find product by id
@@ -73,7 +74,7 @@ public class ProductService {
 	}
 	
 	//find all product of a specific tag
-	public Iterable<Product> findAllByTag(String tag){
+	public List<Product> findAllByTag(String tag){
 		return productRepository.findAllByTag(tag);
 	}
 

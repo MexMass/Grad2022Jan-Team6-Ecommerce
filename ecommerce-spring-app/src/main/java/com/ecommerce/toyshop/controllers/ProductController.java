@@ -51,6 +51,12 @@ public class ProductController {
 		Optional<Product> product = productService.findById(id);
 		return product;
 	}
+	
+	@GetMapping(value = "/products/{tag}", produces = "application/json")
+	public Iterable<Product> getProductByTag(@PathVariable("id") String tag) {
+		Iterable<Product> products = productService.findAllByTag(tag);
+		return products;
+	}
 
 	@PostMapping(value = "/products/create",  consumes = "application/json")
 	@ResponseBody // binds method return value to the web response body
