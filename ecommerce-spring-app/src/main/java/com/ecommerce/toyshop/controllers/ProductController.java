@@ -53,8 +53,8 @@ public class ProductController {
 	}
 	
 	@GetMapping(value = "/products/{tag}", produces = "application/json")
-	public Iterable<Product> getProductByTag(@PathVariable("id") String tag) {
-		Iterable<Product> products = productService.findAllByTag(tag);
+	public List<Product> getProductByTag(@PathVariable("id") String tag) {
+		List<Product> products = productService.findAllByTag(tag);
 		return products;
 	}
 
