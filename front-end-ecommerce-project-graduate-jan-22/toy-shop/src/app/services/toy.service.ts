@@ -28,7 +28,7 @@ export class ToyService {
   //method to fetch a toy by id
   public getToyById(id:number):Observable<Toy>{
     let observable:Observable<Toy>
-    let idURL = `${this.URL}/${id}`
+    let idURL = `${this.URL}/id/${id}`
     observable=this.http.get<Toy>(idURL);
     return observable;
   }
@@ -37,8 +37,6 @@ export class ToyService {
   public getToyByTag(tag:string):Observable<Toy[]>{
     let observable:Observable<Toy[]>
     let tagURL = `${this.URL}/tag/${tag}`
-    console.log(tagURL);
-    
     observable=this.http.get<Toy[]>(tagURL);
     return observable;
   }
