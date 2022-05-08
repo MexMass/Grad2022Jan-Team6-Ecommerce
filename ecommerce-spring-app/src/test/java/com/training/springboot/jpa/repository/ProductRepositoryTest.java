@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import com.ecommerce.toyshop.entities.Product;
 import com.ecommerce.toyshop.entities.Tag;
 import com.ecommerce.toyshop.repository.ProductRepository;
 import com.ecommerce.toyshop.repository.TagRepository;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 //test the basic CRUD operations
 // setup the environment with spring container and 
@@ -91,5 +94,63 @@ public class ProductRepositoryTest {
 		repository.save(product);
 				
 	}
+	
+	//JUnit test for finding all products
+		@Test
+		public void givenProductList_whenFindAll_thenProductList() {
+
+			//given - precondition or setup
+
+			//when - behaviour or action that is tested
+			Iterable<Product> products = repository.findAll();
+
+			//then - verify output
+			products.forEach((element)->{assertThat(element).isNotNull();});
+		}
+		
+		//JUnit test for finding a product by id
+		@Test
+		public void givenProductId_whenFindById_thenProduct() {
+
+			//given - precondition or setup
+			Long id = 1L;
+			
+			//when - behaviour or action that is tested
+			Optional<Product> product = repository.findById(id);
+
+			//then - verify output
+			assertThat(product).isNotNull();
+			
+		}
+		
+		//JUnit test for finding products by tags
+		@Test
+		public void givenTag_whenFindAllByTag_thenProductList(){
+			
+			//given - precondition or setup
+			String tag = "softtoys";
+			
+			//when - behaviour or action being tested
+			Iterable<Product> tagProducts = repository.findAllByTag(tag);
+			
+			//then - verify output
+			tagProducts.forEach((element)->{assertThat(element).isNotNull();});
+			
+		}
+		
+		//JUnit test for finding product by tag when given no tag
+		@Test
+		public void givenNoTag_whenFindAllByTag_thenNull() {
+
+			//given - precondition or setup
+			String tag = "";
+
+			//when - behaviour or action that is tested
+			Iterable<Product> tagProducts = repository.findAllByTag(tag);
+
+			//then - verify output
+			tagProducts.forEach((element)->{assertThat(element).isNull();});
+
+		}
 
 }
