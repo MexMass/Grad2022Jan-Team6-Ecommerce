@@ -4,9 +4,9 @@ Storage of all Toy Shop related project files of Team 6
 
 Database
 
-Ecommerce Spring App - Spring Boot Back End
+ecommerce-spring-app - Spring Boot Back End
 
-Back end - Node Js
+back-end-ecommerce-project-graduate-jan-22 - Node Js
 
 Front end
 
