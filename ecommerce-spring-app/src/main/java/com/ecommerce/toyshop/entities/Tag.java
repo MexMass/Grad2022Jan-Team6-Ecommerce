@@ -1,4 +1,4 @@
-package com.training.springboot.jpa.entities;
+package com.ecommerce.toyshop.entities;
 
 import java.util.Collection;
 

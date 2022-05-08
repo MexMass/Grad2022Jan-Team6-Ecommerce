@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.training.springboot.jpa.entities.Product;
-import com.training.springboot.jpa.entities.Tag;
+import com.ecommerce.toyshop.entities.Product;
+import com.ecommerce.toyshop.entities.Tag;
+import com.ecommerce.toyshop.repository.ProductRepository;
+import com.ecommerce.toyshop.repository.TagRepository;
 
 //test the basic CRUD operations
 // setup the environment with spring container and 

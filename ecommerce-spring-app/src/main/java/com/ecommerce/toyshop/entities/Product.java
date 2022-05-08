@@ -1,4 +1,4 @@
-package com.training.springboot.jpa.entities;
+package com.ecommerce.toyshop.entities;
 
 
 import java.util.Collection;
@@ -48,14 +48,12 @@ public class Product {
 	@Column(name = "total_price", nullable = false)
 	private int total_price;
 	
-//	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "product_tags",
             schema = "public",
             joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
-
     private Collection<Tag> tags;
 	
 	@Column(name = "discontinued", nullable = false)

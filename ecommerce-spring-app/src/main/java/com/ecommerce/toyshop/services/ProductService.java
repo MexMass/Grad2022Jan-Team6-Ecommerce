@@ -1,21 +1,20 @@
-package com.training.springboot.jpa.services;
+package com.ecommerce.toyshop.services;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.training.springboot.jpa.entities.Product;
-import com.training.springboot.jpa.entities.ProductDto;
-import com.training.springboot.jpa.entities.Tag;
-import com.training.springboot.jpa.repository.ProductRepository;
-import com.training.springboot.jpa.repository.TagRepository;
+import com.ecommerce.toyshop.entities.Product;
+import com.ecommerce.toyshop.entities.ProductDto;
+import com.ecommerce.toyshop.entities.Tag;
+import com.ecommerce.toyshop.repository.ProductRepository;
+import com.ecommerce.toyshop.repository.TagRepository;
 
 @Service
 public class ProductService {
@@ -67,6 +66,21 @@ public class ProductService {
 		productRepository.save(savedProduct); // save product
 	}
 	
-
+	// BELOW IMPORTED FROM OTHER PROJECT
+	
+	//returns all products
+	public Iterable<Product> findAll() {
+		return productRepository.findAll();
+	}
+	
+	//find product by id
+	public Optional<Product> findById(Long id) {
+		return productRepository.findById(id);
+	}
+	
+	//find all product of a specific tag
+	public Iterable<Product> findAllByTag(String tag){
+		return productRepository.findAllByTag(tag);
+	}
 
 }

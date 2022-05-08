@@ -9,7 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import com.training.springboot.jpa.entities.Product;
+import com.ecommerce.toyshop.entities.Product;
+import com.ecommerce.toyshop.repository.ProductRepository;
 
 @SpringBootTest
 public class ProductRepositoryPaginationTest {
