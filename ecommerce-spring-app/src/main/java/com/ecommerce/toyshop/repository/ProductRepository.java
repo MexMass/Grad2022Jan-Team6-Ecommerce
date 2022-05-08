@@ -1,5 +1,7 @@
 package com.ecommerce.toyshop.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +22,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			+ "WHERE tags.name = :tag AND products.discontinued =false", nativeQuery = true)
 	Iterable<Product> findAllByTag(@Param("tag") String tag);
 	
-}
+	
+	@Query(value="SELECT * "
+			+ " FROM products"
+			+ " WHERE discontinued = false",
+			countQuery = "SELECT count(*) FROM products",
+			nativeQuery = true)
+	Page<Product> findAllNotDiscontinued(Pageable pageable);
+	
+};

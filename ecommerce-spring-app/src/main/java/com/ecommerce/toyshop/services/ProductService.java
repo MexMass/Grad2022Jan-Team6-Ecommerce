@@ -28,22 +28,17 @@ public class ProductService {
 	public List<Product> getProductBasedOnPage(int pageNo, int pageSize) {
 
 		PageRequest pageable = PageRequest.of(pageNo, pageSize);
-		Page<Product> page = productRepository.findAll(pageable);
+		Page<Product> page = productRepository.findAllNotDiscontinued(pageable);
 		int totalPages = page.getTotalPages();
 		if (totalPages < pageNo) {
 			pageNo = totalPages - 1;
 		}
 		pageable = PageRequest.of(pageNo, pageSize);
-		page = productRepository.findAll(pageable);
+		page = productRepository.findAllNotDiscontinued(pageable);
 		List<Product> products = page.getContent();
 
 		return products;
 
-	}
-	
-	public List<Product> getAllProducts() {
-		List<Product> products = productRepository.findAll();
-		return products;
 	}
 	
 	public void addNewProduct(ProductDto productDto) { // receive the DTO (data transfer object)
