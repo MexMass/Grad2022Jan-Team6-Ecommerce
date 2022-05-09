@@ -1,11 +1,5 @@
 package com.ecommerce.toyshop.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-
 /*
  *  Object for data transfer. ProductDTO values (from angular) -> Product values (saved in back end)
  */

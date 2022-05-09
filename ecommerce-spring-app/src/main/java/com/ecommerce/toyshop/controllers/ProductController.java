@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,7 @@ public class ProductController {
 
 	// this url will read data from query parameters
 	// query parameters are appended at the end of URL after ?
-	// http://localhost:8080/products?/pgnum=0&size=2
+	// http://localhost:8080/page/products?/pgnum=0&size=2
 	@GetMapping(value = "/page/products", produces = "application/json")
 	public List<Product> getProductsOnPage(@RequestParam("pgnum") int pageNumber, @RequestParam("size") int size) {
 		List<Product> products = this.productService.getProductBasedOnPage(pageNumber, size);
@@ -63,6 +64,14 @@ public class ProductController {
 	public ResponseEntity<String> createProduct(@RequestBody ProductDto productDto) { // get product details from request body
 		productService.addNewProduct(productDto);
 		return new ResponseEntity<String>("{\"response\": \"Product with name '" + productDto.getName() + "' created\"}",HttpStatus.CREATED); // send response back to front end
+	}
+	
+	@PutMapping(value = "/products/discontinue",  consumes = "application/json")
+	@ResponseBody // binds method return value to the web response body
+	public ResponseEntity<String> discontinueProduct(@RequestBody long productId) { // get product details from request body
+		String response = productService.discontinueProduct(productId);
+		return new ResponseEntity<String>(response,HttpStatus.OK); // send response back to front end
+//		return new ResponseEntity<String>("{\"response\": \"Product with name '" + product.getName() + "' discontinued\"}",HttpStatus.OK); // send response back to front end
 	}
 	
 }

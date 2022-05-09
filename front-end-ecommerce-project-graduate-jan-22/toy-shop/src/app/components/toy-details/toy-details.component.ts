@@ -16,7 +16,7 @@ export class ToyDetailsComponent implements OnInit {
   discountService:DiscountService;
   activeroute: ActivatedRoute;
   postId:any;
-  toy:Toy = {
+  toy:Toy = { // initialize toy
     id: 0,
     name: '',
     supplier_name: '',
@@ -32,6 +32,8 @@ export class ToyDetailsComponent implements OnInit {
   };
 
   discountPrice:number = 0;
+
+  myresponse : String = ''; // storage of response from back-end
 
   //Inject and initialise ToyService into contructor to allow access with backend
   constructor(activeroute:ActivatedRoute,toyService:ToyService, discountService:DiscountService) {
@@ -71,4 +73,13 @@ export class ToyDetailsComponent implements OnInit {
   getDiscountPrice(){
    this.toy.total_price=(this.discount.percent*this.toy.total_price)/10;
   }
+  discontinueToy(){
+    var result = confirm("Are you sure?");
+    if (result) {
+      let x = this.service.discontinueToy(this.toy.id);
+      x.subscribe((response)=>{this.myresponse = response.response; // subscribe and wait for response. Store response
+      })
+    }
+  }
+
 }
