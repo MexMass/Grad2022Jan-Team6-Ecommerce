@@ -40,6 +40,7 @@ export class ToyService {
     observable=this.http.get<Toy[]>(tagURL);
     return observable;
   }
+
   //method to create toy
   public createToy(toy:Toy):Observable<any>{ // 
     let createToyURL = `${this.URL}/create` // form url http://localhost:8080/api/v1/products/create
@@ -47,4 +48,11 @@ export class ToyService {
     console.log(toy);
     return observable;
   }
+
+    //method to discontinue toy
+    public discontinueToy(toyid:number):Observable<any>{ 
+      let createToyURL = `${this.URL}/discontinue` // form url http://localhost:8080/api/v1/products/discontinue
+      let observable=this.http.put(createToyURL, toyid); // send put request with toy id in the request body
+      return observable;
+    }
 }

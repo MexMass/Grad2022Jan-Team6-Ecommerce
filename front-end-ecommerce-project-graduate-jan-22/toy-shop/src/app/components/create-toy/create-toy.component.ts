@@ -33,11 +33,11 @@ export class CreateToyComponent implements OnInit {
   onSubmit(instance: Toy){ // get toy form values
     let x = this.service.createToy(instance) // call createToy function and pass form details
     x.subscribe((response)=>{this.myresponse = response.response; // subscribe and wait for response. Store response
-    console.log(response)
   })
     
     this.createToyForm.reset() // reset form
   }
+  
   // get functions for shortening the reference to values in the html
   get name() {
     return this.createToyForm.get('name');

@@ -13,7 +13,7 @@ export class ToyDetailsComponent implements OnInit {
   service:ToyService;
   activeroute: ActivatedRoute;
   postId:any;
-  toy:Toy = {
+  toy:Toy = { // initialize toy
     id: 0,
     name: '',
     supplier_name: '',
@@ -22,6 +22,8 @@ export class ToyDetailsComponent implements OnInit {
     discontinued: false,
     image_url: ''
   };
+
+  myresponse : String = ''; // storage of response from back-end
 
   //Inject and initialise ToyService into contructor to allow access with backend
   constructor(activeroute:ActivatedRoute,service:ToyService) {
@@ -43,6 +45,15 @@ export class ToyDetailsComponent implements OnInit {
     let x = this.service.getToyById(this.postId);
     x. subscribe((response)=>{this.toy = response;
     })
+  }
+
+  discontinueToy(){
+    var result = confirm("Are you sure?");
+    if (result) {
+      let x = this.service.discontinueToy(this.toy.id);
+      x.subscribe((response)=>{this.myresponse = response.response; // subscribe and wait for response. Store response
+      })
+    }
   }
 
 }

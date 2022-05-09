@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,6 +64,14 @@ public class ProductController {
 	public ResponseEntity<String> createProduct(@RequestBody ProductDto productDto) { // get product details from request body
 		productService.addNewProduct(productDto);
 		return new ResponseEntity<String>("{\"response\": \"Product with name '" + productDto.getName() + "' created\"}",HttpStatus.CREATED); // send response back to front end
+	}
+	
+	@PutMapping(value = "/products/discontinue",  consumes = "application/json")
+	@ResponseBody // binds method return value to the web response body
+	public ResponseEntity<String> discontinueProduct(@RequestBody long productId) { // get product details from request body
+		String response = productService.discontinueProduct(productId);
+		return new ResponseEntity<String>(response,HttpStatus.OK); // send response back to front end
+//		return new ResponseEntity<String>("{\"response\": \"Product with name '" + product.getName() + "' discontinued\"}",HttpStatus.OK); // send response back to front end
 	}
 	
 }

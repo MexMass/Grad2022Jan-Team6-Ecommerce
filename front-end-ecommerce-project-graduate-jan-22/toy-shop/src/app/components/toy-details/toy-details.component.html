@@ -1,3 +1,5 @@
+<p style="text-align: center" *ngIf="myresponse !== ''" class="alert alert-success response"> {{ myresponse }}
+</p>
 <div id="detail-wrap">
 <div class="container">
     <div class="row ">
@@ -11,6 +13,8 @@
             <h6>{{toy.supplier_name}}</h6>
 
             <a class=" cart-btn btn btn-secondary">Add to Cart</a>
+            <button class=" cart-btn btn btn-info" (click)="discontinueToy()" >Discontinue</button>
+            
         
         </div>
     </div>
