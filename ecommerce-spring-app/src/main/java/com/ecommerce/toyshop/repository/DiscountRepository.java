@@ -12,6 +12,6 @@ import com.ecommerce.toyshop.entities.Discount;
 @Repository
 public interface DiscountRepository extends JpaRepository<Discount,Long> {
 	
-	@Query(value="SELECT percent FROM discounts WHERE product_id = :percent ",nativeQuery=true)
-	Optional<Discount> percentByProductId(@Param("percent")Long productId);
+	@Query(value="SELECT * FROM discounts WHERE product_id = :percent ",nativeQuery=true)
+	Optional<Discount> percentByProductId(@Param("percent")long productId);
 }

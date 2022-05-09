@@ -2,6 +2,7 @@ package com.ecommerce.toyshop.controllers;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,10 @@ import com.ecommerce.toyshop.services.DiscountService;
 public class DiscountController {
 	
 	private DiscountService discountService;
+	
+	public DiscountController(@Autowired DiscountService service) {
+		this.discountService = service;
+	}
 	
 	@GetMapping(value = "/discount/id/{id}", produces = "application/json")
 	public Optional<Discount> getDiscount(@PathVariable("id") Long id) {

@@ -5,7 +5,7 @@ import { Toy } from '../model/toy';
 import { Discount } from '../model/discount';
 
 @Injectable()
-export class ToyService {
+export class DiscountService {
     http:HttpClient;
 
     
@@ -20,9 +20,9 @@ export class ToyService {
   }
 
   public getDiscount(productId:number):Observable<Discount>{
-      let observable:Observable<Discount>
-      let idURL = `${this.URL}/id/${productId}`
-      observable=this.http.get<Discount>(this.URL);
-      return observable;
+    let observable:Observable<Discount>
+    let idURL = `${this.URL}/id/${productId}`
+    observable=this.http.get<Discount>(idURL);
+    return observable;
   }
 }

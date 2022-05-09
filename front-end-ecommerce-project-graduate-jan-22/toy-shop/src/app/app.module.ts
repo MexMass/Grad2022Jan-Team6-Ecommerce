@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToyComponent } from './components/toy/toy.component';
 import { ToyService } from './services/toy.service';
+import { DiscountService } from './services/discount.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CreateToyComponent } from './components/create-toy/create-toy.component';
 import { ToyDetailsComponent } from './components/toy-details/toy-details.component';
@@ -47,7 +48,7 @@ const routes: Routes  = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule
   ],
-  providers: [ToyService],
+  providers: [ToyService, DiscountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
