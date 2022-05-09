@@ -9,7 +9,7 @@
         <div class="col text-center">
             <h3>{{toy.name}}</h3>
             <h4>Stock: {{toy.units_in_stock}}</h4>
-            <h4 *ngIf="discountPrice==0; else discountedPrice">Price: {{toy.total_price | currency:'GBP'}}</h4>
+            <h4 *ngIf="discountPrice==null; else discountedPrice">Price: {{toy.total_price | currency:'GBP'}}</h4>
             <ng-template #discountedPrice> Discounted Price: {{discountPrice | currency:'GBP'}}</ng-template>
             <h6>{{toy.supplier_name}}</h6>
 

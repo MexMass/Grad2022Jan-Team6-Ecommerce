@@ -35,7 +35,7 @@ public class ProductController {
 	// this url will read data from query parameters
 	// query parameters are appended at the end of URL after ?
 	// http://localhost:8080/page/products?/pgnum=0&size=2
-	@GetMapping(value = "/page/products", produces = "application/json")
+	@GetMapping(value = "/products/page", produces = "application/json")
 	public List<Product> getProductsOnPage(@RequestParam("pgnum") int pageNumber, @RequestParam("size") int size) {
 		List<Product> products = this.productService.getProductBasedOnPage(pageNumber, size);
 		return products;

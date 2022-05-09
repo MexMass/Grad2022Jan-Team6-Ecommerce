@@ -23,7 +23,7 @@ const routes: Routes  = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path : 'toys/tag/:tag' , component :TagComponent },
   {path : 'toys/create' , component :CreateToyComponent},
-  {path : 'toys', component : ToyComponent},
+  {path : 'toys/page/:num', component : ToyComponent},
   {path: 'toys/:id', component: ToyDetailsComponent},
   {path: '**', component: PagenotfoundComponent}
 

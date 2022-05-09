@@ -27,13 +27,13 @@ public class ProductService {
 
 	public List<Product> getProductBasedOnPage(int pageNo, int pageSize) {
 
-		PageRequest pageable = PageRequest.of(pageNo, pageSize);
+		PageRequest pageable = PageRequest.of(pageNo-1, pageSize);
 		Page<Product> page = productRepository.findAllNotDiscontinued(pageable);
 		int totalPages = page.getTotalPages();
-		if (totalPages < pageNo) {
+		if (totalPages > pageNo) {
 			pageNo = totalPages - 1;
 		}
-		pageable = PageRequest.of(pageNo, pageSize);
+		pageable = PageRequest.of(pageNo-1, pageSize);
 		page = productRepository.findAllNotDiscontinued(pageable);
 		List<Product> products = page.getContent();
 

@@ -55,4 +55,12 @@ export class ToyService {
       let observable=this.http.put(createToyURL, toyid); // send put request with toy id in the request body
       return observable;
     }
+
+    //method to get page of products
+    public getProductPage(pageNum:number):Observable<Toy[]>{
+      let observable:Observable<Toy[]>
+      let pageURL = `${this.URL}/page?pgnum=${pageNum}&size=2`
+      observable = this.http.get<Toy[]>(pageURL);
+      return observable;
+    }
 }

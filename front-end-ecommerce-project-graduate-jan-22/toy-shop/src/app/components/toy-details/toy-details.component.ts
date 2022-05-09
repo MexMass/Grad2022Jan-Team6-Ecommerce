@@ -12,8 +12,8 @@ import { ToyService } from 'src/app/services/toy.service';
 })
 export class ToyDetailsComponent implements OnInit {
 
-  toyService:ToyService;
-  discountService:DiscountService;
+  toyService: ToyService;
+  discountService: DiscountService;
   activeroute: ActivatedRoute;
   postId:any;
   toy:Toy = { // initialize toy
@@ -31,7 +31,7 @@ export class ToyDetailsComponent implements OnInit {
     percent: 0
   };
 
-  discountPrice:number = 0;
+  discountPrice:any;
 
   myresponse : String = ''; // storage of response from back-end
 
@@ -64,7 +64,7 @@ export class ToyDetailsComponent implements OnInit {
   }
 
   getDiscount(){
-    let x =this.discountService.getDiscount(this.postId);
+    let x =this.discountService.getDiscount(this.toy.id);
     x.subscribe((response)=>{this.discount = response;
     })
     this.getDiscountPrice();
@@ -73,10 +73,11 @@ export class ToyDetailsComponent implements OnInit {
   getDiscountPrice(){
    this.toy.total_price=(this.discount.percent*this.toy.total_price)/10;
   }
+
   discontinueToy(){
     var result = confirm("Are you sure?");
     if (result) {
-      let x = this.service.discontinueToy(this.toy.id);
+      let x = this.toyService.discontinueToy(this.toy.id);
       x.subscribe((response)=>{this.myresponse = response.response; // subscribe and wait for response. Store response
       })
     }
