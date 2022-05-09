@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.toyshop.entities.Discount;
-import com.ecommerce.toyshop.entities.Product;
 import com.ecommerce.toyshop.services.DiscountService;
 
 @RestController
