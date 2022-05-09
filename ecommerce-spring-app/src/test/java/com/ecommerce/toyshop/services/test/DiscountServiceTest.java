@@ -1,4 +1,6 @@
-package com.ecommerce.toyshop.repository.test;
+package com.ecommerce.toyshop.services.test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
@@ -7,29 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.ecommerce.toyshop.entities.Discount;
-import com.ecommerce.toyshop.repository.DiscountRepository;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import com.ecommerce.toyshop.services.DiscountService;
 
 @SpringBootTest
-public class DiscountRepositoryTest {
+public class DiscountServiceTest {
 	
 	@Autowired
-	DiscountRepository discountRepo;
+	DiscountService discountService;
 	
-	//JUnit test for getting discount by product id
+	//JUnit test for service to get discount by product id
 	@Test
-	public void givenId_whenDiscountById_thenDiscount() {
+	public void givenId_whenGetDiscount_thenDiscount() {
 
 		//given - precondition or setup
 		int productId = 2;
-
-		//when - behaviour or action that is tested
-		Optional<Discount> discountOptional = discountRepo.discountByProductId(productId);
 		
+		//when - behaviour or action that is tested
+		Optional<Discount> discountOptional = discountService.getDiscount((long)productId);
+
 		//then - verify output
 		Discount discount = discountOptional.get();
-		
 		assertThat(discount.getProduct_id()).isEqualTo((long)productId);
+
 	}
 }

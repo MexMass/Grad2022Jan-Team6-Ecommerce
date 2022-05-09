@@ -15,6 +15,6 @@ public class DiscountService {
 	private DiscountRepository repo;
 	
 	public Optional<Discount> getDiscount(Long productId) {
-		return repo.percentByProductId(productId);
+		return repo.discountByProductId(productId);
 	}
 }
