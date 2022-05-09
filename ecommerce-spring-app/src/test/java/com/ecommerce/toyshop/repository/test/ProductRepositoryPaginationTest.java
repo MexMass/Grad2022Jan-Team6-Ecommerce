@@ -1,4 +1,4 @@
-package com.training.springboot.jpa.repository;
+package com.ecommerce.toyshop.repository.test;
 
 import java.util.List;
 

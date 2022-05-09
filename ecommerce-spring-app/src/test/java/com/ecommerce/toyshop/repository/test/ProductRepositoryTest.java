@@ -1,4 +1,4 @@
-package com.training.springboot.jpa.repository;
+package com.ecommerce.toyshop.repository.test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
